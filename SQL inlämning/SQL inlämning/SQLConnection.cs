@@ -1,33 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQL_inlämning
 {
     internal class SQLConnection
     {
-        public static DataTable GetDataTable(string sql, string paramName, string paramValue)
+        public static DataTable SqlConnection(string sqlCommand)
         {
-            var connectionString = "server=(localdb)\\mssqllocaldb;integrated security=true;database=People";
-            var dt = new DataTable();
-            using (var connection = new SqlConnection(connectionString))
+            var connectionString = @"Server=(localdb)\mssqllocaldb;Database=Inlämning1;Trusted_Connection=True;";
+
+            var sqlQuery = "Select Top 10 * from People";
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            DataTable dta = null;
+            con = new SqlConnection(connectionString);
+            cmd = new SqlCommand(sqlQuery, con);
+            var adapter = new SqlDataAdapter(cmd);
+
+            dta = new DataTable();
+            adapter.Fill(dta);
+
+            if (dta.Rows.Count > 0)
             {
-                connection.Open();
-                using (var cmd = new SqlCommand(sql, connection))
+                foreach (DataRow person in dta.Rows)
                 {
-                    cmd.Parameters.AddWithValue(paramName, paramValue);
-                    using (var adapter = new SqlDataAdapter(cmd))
-                    {
-                        adapter.Fill(dt);
-                    }
+                    Console.WriteLine(person[0] + " " + person[1]);
                 }
             }
-
-            return dt;
+            con.Open();
+            return dta;
         }
     }
 }
+

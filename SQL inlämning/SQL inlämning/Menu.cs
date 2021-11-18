@@ -13,7 +13,6 @@ namespace SQL_inlämning
         {
             while (true)
             {
-                
                 Console.WriteLine("Vilken information vill du se?");
                 Console.WriteLine("1. Hur många länder finns?");
                 Console.WriteLine("2. Är alla usernames och passwords unika?");
