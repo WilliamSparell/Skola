@@ -5,11 +5,11 @@ namespace SQL_inlämning
 {
     internal class SQLConnection
     {
-        public static DataTable SqlConnection(string sqlCommand)
+        public static DataTable SqlConn(string sqlQuery)
         {
+            //https://github.com/marcusjobb/net21/blob/main/OOA/SQLCSharp/SQLCSharp/Program.cs
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=Inlämning1;Trusted_Connection=True;";
 
-            var sqlQuery = "Select Top 10 * from People";
             SqlConnection con = null;
             SqlCommand cmd = null;
             DataTable dta = null;
@@ -22,9 +22,9 @@ namespace SQL_inlämning
 
             if (dta.Rows.Count > 0)
             {
-                foreach (DataRow person in dta.Rows)
+                foreach (DataRow row in dta.Rows)
                 {
-                    Console.WriteLine(person[0] + " " + person[1]);
+                    Console.WriteLine(row[0]);
                 }
             }
             con.Open();
