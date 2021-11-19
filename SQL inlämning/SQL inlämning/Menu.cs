@@ -18,7 +18,7 @@ namespace SQL_inlämning
                 Console.WriteLine("2. Är alla usernames och passwords unika?");
                 Console.WriteLine("3. Hur många är från Norden respektive Skandinavien");
                 Console.WriteLine("4. Vilket är det vanligaste namnet");
-                Console.WriteLine("5. Lista de tio första användarna vars namn börjar på A");
+                Console.WriteLine("5. Lista de tio första användarna vars namn börjar på L");
                 Console.WriteLine("6. Visa alla användare vars för- och efternamn har samma begynnelsebokstav");
                 string input = Console.ReadLine();
 
@@ -30,8 +30,26 @@ namespace SQL_inlämning
                     Input3();
                 if (input == "4")
                     Input4();
+                if (input == "5")
+                    Input5();
+                if (input == "6")
+                    Input6();
+                
+
 
             }
+        }
+
+        private static void Input6()
+        {
+            Console.Clear();
+            SqlConn("SELECT * FROM Mackaroo_data WHERE UPPER(LEFT(first_name, 1)) = UPPER(LEFT(last_name, 1))");
+        }
+
+        private static void Input5()
+        {
+            Console.Clear();
+            SqlConn("SELECT top 10 first_name FROM Mackaroo_data WHERE first_name LIKE 'L%'");
         }
 
         private static void Input4()
