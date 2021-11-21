@@ -5,7 +5,7 @@ namespace SQL_inlämning
 {
     internal class SQLConnection
     {
-        public static DataTable SqlConn(string sqlQuery)
+        public static void SqlConn(string sqlQuery)
         {
             //https://github.com/marcusjobb/net21/blob/main/OOA/SQLCSharp/SQLCSharp/Program.cs
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=Inlämning1;Trusted_Connection=True;";
@@ -24,11 +24,10 @@ namespace SQL_inlämning
             {
                 foreach (DataRow row in dta.Rows)
                 {
-                    Console.WriteLine(row[0]);
+                    Console.WriteLine(row[0] + " " + row[1]);
                 }
             }
             con.Open();
-            return dta;
         }
     }
 }

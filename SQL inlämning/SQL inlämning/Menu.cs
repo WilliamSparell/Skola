@@ -43,7 +43,7 @@ namespace SQL_inlämning
         private static void Input6()
         {
             Console.Clear();
-            SqlConn("SELECT * FROM Mackaroo_data WHERE UPPER(LEFT(first_name, 1)) = UPPER(LEFT(last_name, 1))");
+            SqlConn("SELECT first_name, last_name FROM Mackaroo_data WHERE UPPER(LEFT(first_name, 1)) = UPPER(LEFT(last_name, 1))");
         }
 
         private static void Input5()
@@ -61,7 +61,9 @@ namespace SQL_inlämning
         private static void Input3()
         {
             Console.Clear();
+            Console.Write("Norden : ");
             SqlConn("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark' OR country = 'Iceland' OR country = 'Finland'");
+            Console.Write("Skandinavien : ");
             SqlConn("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark'");
         }
 
