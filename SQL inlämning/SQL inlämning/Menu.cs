@@ -17,7 +17,7 @@ namespace SQL_inlämning
                 Console.WriteLine("1. Hur många länder finns?");
                 Console.WriteLine("2. Är alla usernames och passwords unika?");
                 Console.WriteLine("3. Hur många är från Norden respektive Skandinavien");
-                Console.WriteLine("4. Vilket är det vanligaste namnet");
+                Console.WriteLine("4. Vilket är det vanligaste landet");
                 Console.WriteLine("5. Lista de tio första användarna vars namn börjar på L");
                 Console.WriteLine("6. Visa alla användare vars för- och efternamn har samma begynnelsebokstav");
                 string input = Console.ReadLine();
@@ -43,40 +43,40 @@ namespace SQL_inlämning
         private static void Input6()
         {
             Console.Clear();
-            SqlConn("SELECT first_name, last_name FROM Mackaroo_data WHERE UPPER(LEFT(first_name, 1)) = UPPER(LEFT(last_name, 1))");
+            SqlConnTwoRow("SELECT first_name, last_name FROM Mackaroo_data WHERE UPPER(LEFT(first_name, 1)) = UPPER(LEFT(last_name, 1))");
         }
 
         private static void Input5()
         {
             Console.Clear();
-            SqlConn("SELECT top 10 first_name FROM Mackaroo_data WHERE first_name LIKE 'L%'");
+            SqlConnOneRow("SELECT top 10 first_name FROM Mackaroo_data WHERE first_name LIKE 'L%'");
         }
 
         private static void Input4()
         { 
             Console.Clear();
-            SqlConn("SELECT TOP 1 country FROM Mackaroo_data GROUP BY country ORDER BY COUNT(*) DESC");
+            SqlConnOneRow("SELECT TOP 1 country FROM Mackaroo_data GROUP BY country ORDER BY COUNT(*) DESC");
         }
 
         private static void Input3()
         {
             Console.Clear();
             Console.Write("Norden : ");
-            SqlConn("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark' OR country = 'Iceland' OR country = 'Finland'");
+            SqlConnOneRow("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark' OR country = 'Iceland' OR country = 'Finland'");
             Console.Write("Skandinavien : ");
-            SqlConn("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark'");
+            SqlConnOneRow("SELECT Count(country) FROM Mackaroo_data WHERE country = 'Sweden' OR country = 'Norway' OR country = 'Denmark'");
         }
 
         private static void Input2()
         {
                 Console.Clear();
-                SqlConn("select Count(DISTINCT username), Count(DISTINCT password) from Mackaroo_data");
+                SqlConnTwoRow("select Count(DISTINCT username), Count(DISTINCT password) from Mackaroo_data");
         }
 
         private static void Input1()
         {
                 Console.Clear();
-                SqlConn("select Count(DISTINCT country) from Mackaroo_data");
+                SqlConnOneRow("select Count(DISTINCT country) from Mackaroo_data");
         }
     }
 }
