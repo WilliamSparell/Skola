@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WSGenealogi;
+using WS_Genealogi.Models;
 
-namespace WS_Familjeträd.Database
+namespace WS_Genealogi.Database
 {
     internal class PersonContext : DbContext
     {
-        private const string DatabaseName = "Genealogi";
+        private const string DatabaseName = "WSGenealogi";
         public DbSet<Person> Persons { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

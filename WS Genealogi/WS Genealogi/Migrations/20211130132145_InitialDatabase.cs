@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace WS_Familjeträd.Migrations
+namespace WS_Genealogi.Migrations
 {
-    public partial class Person : Migration
+    public partial class InitialDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,8 +18,8 @@ namespace WS_Familjeträd.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DeathDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mor = table.Column<int>(type: "int", nullable: false),
-                    Far = table.Column<int>(type: "int", nullable: false)
+                    Mor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Far = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

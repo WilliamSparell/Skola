@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WS_Familjeträd.Database;
-using WS_Familjeträd.Migrations;
+using WS_Genealogi.Database;
+using WS_Genealogi.Models;
 
-namespace WS_Familjeträd.Utiles
+namespace WS_Genealogi.Utiles
 {
     internal class PersonHelper
     {
