@@ -1,4 +1,4 @@
-﻿namespace WS_Familjeträd
+﻿namespace WSGenealogi
 {
     class Program
     {
