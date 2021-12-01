@@ -25,9 +25,52 @@ namespace WS_Genealogi.Utiles
                     person = new Person { Name = name, LastName = lastname };
                     db.Persons.Add(person);
                     db.SaveChanges(); // objektet uppdateras med ID efter save
+                    Console.WriteLine("Personen är nu skapad!");
                 }
                 return person;
             }
         }
+
+        public static Person FindAndDeletePerson(string name, string lastname)
+        {
+            using (var db = new PersonContext())
+            {
+                var person = db.Persons.
+                FirstOrDefault(
+
+                p => p.Name == name && 
+                (lastname == p.LastName)
+                );
+                if (person != null) // om personen finns, ta bort den
+                {
+                    db.Persons.Remove(person);
+                    db.SaveChanges();
+                    Console.WriteLine("Personen är nu borta!");
+                }
+                return person;
+            }
+        }
+
+        public static Person FindOrCreateParent(string name, string lastname)
+        {
+            using (var db = new PersonContext())
+            {
+                var person = db.Persons.
+                FirstOrDefault(
+
+                p => p.Name == name && 
+                (lastname == p.LastName)
+                );
+                if (person == null) 
+                {
+                    person = new Person { Name = name, LastName = lastname };
+                    db.Persons.Add(person);
+                    db.SaveChanges(); 
+                    Console.WriteLine("Personen är nu skapad!");
+                }
+                return person;
+            }
+        }
+        
     }
 }
