@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WS_Genealogi.Database;
 
 namespace WS_Genealogi.Utiles
 {
@@ -17,16 +18,27 @@ namespace WS_Genealogi.Utiles
             Console.Write(text);
             return Console.ReadLine();
         }
-        public static string FixUp(string input)
+
+        public static void ShowListOfPeopleOnTheFreakingDatabaseTable() // :D
         {
-            input.Trim();
+            // Först behöver du databaskoppling
+            using (var db = new PersonContext())
+            {
+                // foreacha hela listan av person (exempelvis)
+                foreach (var item in db.Persons)
+                {
+                    Console.WriteLine(item);
+                }
+                //
+                // :)
+                // Då skriver den ut WS Genealogi.PersonContext.Person
+                // men...  du kan lägga en ToString i Person som returnerar en string med namn och övrig data
+                // då kan du köra med bara (item)
+            }
 
-            if (input.Length == 1)
-                System.Console.WriteLine(char.ToUpper(input[0]));
-            else
-                System.Console.WriteLine(char.ToUpper(input[0]) + input.Substring(1));
 
-            return input;
+
         }
+        
     }
 }

@@ -10,6 +10,7 @@ namespace WS_Genealogi.Utiles
 {
     internal class PersonHelper
     {
+        // Jäklar vad snyggt! Bra lösning!
         public static Person FindOrCreatePerson(string name, string lastname)
         {
             using (var db = new PersonContext())
@@ -24,7 +25,7 @@ namespace WS_Genealogi.Utiles
                 {
                     person = new Person { Name = name, LastName = lastname };
                     db.Persons.Add(person);
-                    db.SaveChanges(); // objektet uppdateras med ID efter save
+                    db.SaveChanges(); 
                     Console.WriteLine("Personen är nu skapad!");
                 }
                 return person;
@@ -51,26 +52,8 @@ namespace WS_Genealogi.Utiles
             }
         }
 
-        public static Person FindOrCreateParent(string name, string lastname)
-        {
-            using (var db = new PersonContext())
-            {
-                var person = db.Persons.
-                FirstOrDefault(
-
-                p => p.Name == name && 
-                (lastname == p.LastName)
-                );
-                if (person == null) 
-                {
-                    person = new Person { Name = name, LastName = lastname };
-                    db.Persons.Add(person);
-                    db.SaveChanges(); 
-                    Console.WriteLine("Personen är nu skapad!");
-                }
-                return person;
-            }
-        }
+        
+        
         
     }
 }
