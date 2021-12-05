@@ -21,19 +21,15 @@ namespace WS_Genealogi.Utiles
 
         public static void ShowListOfPeopleOnTheFreakingDatabaseTable() // :D
         {
-            // Först behöver du databaskoppling
+            
             using (var db = new PersonContext())
             {
-                // foreacha hela listan av person (exempelvis)
+                
                 foreach (var item in db.Persons)
                 {
                     Console.WriteLine(item);
                 }
-                //
-                // :)
-                // Då skriver den ut WS Genealogi.PersonContext.Person
-                // men...  du kan lägga en ToString i Person som returnerar en string med namn och övrig data
-                // då kan du köra med bara (item)
+                
             }
 
 

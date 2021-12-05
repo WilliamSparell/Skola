@@ -1,6 +1,6 @@
 ﻿using WS_Genealogi.Database;
 using WS_Genealogi.Models;
-
+using static WS_Genealogi.Utiles.BasicHelper;
 namespace WS_Genealogi.Utiles
 {
     internal class PersonHelper
@@ -97,6 +97,54 @@ namespace WS_Genealogi.Utiles
 
             }
 
+        }
+
+        public static Person FindOrCreateFather(string name, string lastname, int birthday)
+        {
+            using (var db = new PersonContext())
+            {
+                var person = db.Persons.
+                FirstOrDefault(
+
+                p => p.Name == name &&
+                (lastname == p.LastName)
+                );
+                if (person != null)
+                {
+                    string parentName = WriteAndInput("Skriv in namn på förälder: ");
+                    string parentLastName = WriteAndInput("Skriv in efternamn på förälder: ");
+                    int.TryParse(WriteAndInput("Skriv in födelseår på förälder: "), out int parentBirthYear);
+                    person.Father = parentName + " " + parentLastName;
+                    db.Persons.Update(person);
+                    db.SaveChanges();
+                    FindOrCreatePerson(parentName, parentLastName, parentBirthYear);
+                }
+                return person;
+            }
+        }
+        public static Person FindOrCreateMother(string name, string lastname, int birthday)
+        {
+            using (var db = new PersonContext())
+            {
+                var person = db.Persons.
+                FirstOrDefault(
+
+                p => p.Name == name &&
+                (lastname == p.LastName) &&
+                (birthday == p.Birthday)
+                );
+                if (person != null)
+                {
+                    string parentName = WriteAndInput("Skriv in namn: ");
+                    string parentLastName = WriteAndInput("Skriv in efternamn: ");
+                    int.TryParse(WriteAndInput("Skriv in födelseår: "), out int parentBirthYear);
+                    person.Mother = parentName + " " + parentLastName;
+                    db.Persons.Update(person);
+                    db.SaveChanges();
+                    FindOrCreatePerson(parentName, parentLastName, parentBirthYear);
+                }
+                return person;
+            }
         }
     }
 }
