@@ -13,9 +13,12 @@ namespace WS_Genealogi.Menu
     {
         public void StartMenu()
         {
+            while (true)
+            {
             Write("1. Skapa Person");
             Write("2. Radera Person");
             Write("3. Lista Personer");
+            Write("4. Uppdatera Person");
             string input = Console.ReadLine();
 
             if (input == "1")
@@ -23,7 +26,10 @@ namespace WS_Genealogi.Menu
             if (input == "2")
                 DeletePerson();
             if (input == "3") 
-                ListPerson();
+                ShowListOfPeopleOnTheFreakingDatabaseTable();
+            if (input == "4")
+                UpdatePerson();
+            }
 
             
 
@@ -58,8 +64,16 @@ namespace WS_Genealogi.Menu
         {
             string name = WriteAndInput("Skriv in namn: ");
             string lastName = WriteAndInput("Skriv in efternamn: ");
+            int.TryParse(WriteAndInput("Skriv in födelseår: "), out int birthYear);
             
-            FindOrCreatePerson(name, lastName);
+            FindOrCreatePerson(name, lastName, birthYear);
+        }
+        private static void UpdatePerson()
+        {
+            string name = WriteAndInput("Skriv in namn: ");
+            string lastName = WriteAndInput("Skriv in efternamn: ");
+
+            FindAndUpdatePerson(name, lastName);
         }
     }
 }

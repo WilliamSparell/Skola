@@ -10,12 +10,13 @@ namespace WS_Genealogi.Models
         public string LastName { get; set; }
         public string? Mor { get; set; }
         public string? Far { get; set; }
+        public int Birthday { get; set; }
 
         public override string ToString()
         {
             // Här kan du returnera allt som en sträng
-            return $"{Name} {LastName ?? "Efternamn saknas"} osv...";
-        } 
+            return $"{Name ?? "Saknas"} {LastName ?? "Saknas"} {Mor} {Far} {Birthday}";
+        }
         //okok, tack för hjälpen!
         // när du försöker skriva ut ett objekt av typen Person (som i foreachen) så anropas ToString automagiskt
         // :)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WS_Genealogi.Database;
 
 namespace WS_Genealogi.Utiles
 {
@@ -43,12 +44,15 @@ namespace WS_Genealogi.Utiles
 
         private static void DisplayList(List<Models.Person> names, string name)
         {
+            using (var reader = new PersonContext())
+            {
             Console.WriteLine(name);
             foreach (var person in names.OrderBy(n => n.LastName).ThenBy(n => n.Name))
             {
                 Console.WriteLine(person);
             }
-            Console.WriteLine();
+                Console.WriteLine();
+            }
         }
         
     }
