@@ -19,7 +19,7 @@ namespace WS_Genealogi.Utiles
             return Console.ReadLine();
         }
 
-        public static void ShowListOfPeopleOnTheFreakingDatabaseTable() // :D
+        public static void ShowAll() // :D
         {
             
             using (var db = new PersonContext())
@@ -31,10 +31,28 @@ namespace WS_Genealogi.Utiles
                 }
                 
             }
-
-
-
         }
-        
+        public static void SearchByName(string name)
+        {
+            using (var db = new PersonContext())
+            {
+                foreach (var person in db.Persons.Where(n => n.Name.Contains(name)))
+            {
+                Console.WriteLine(person);
+            }
+
+            }
+        }
+        public static void SearchByLastName(string lastName)
+        {
+            using (var db = new PersonContext())
+            {
+                foreach (var person in db.Persons.Where(n => n.LastName.Contains(lastName)))
+                {
+                    Console.WriteLine(person);
+                }
+
+            }
+        }
     }
 }

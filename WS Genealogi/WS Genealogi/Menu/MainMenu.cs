@@ -42,11 +42,18 @@ namespace WS_Genealogi.Menu
             Write("3. Lista alla");
             string input2 = Console.ReadLine();
             if (input2 == "1")
-                
+            {
+                string name = WriteAndInput("Skriv in namn: ");
+                SearchByName(name);
+            }
             if (input2 == "2")
+            {
+                string lastName = WriteAndInput("Skriv in efternamn: ");
+                SearchByLastName(lastName);
+            }
                 
             if (input2 == "3")
-                ShowListOfPeopleOnTheFreakingDatabaseTable();
+                ShowAll();
         }
 
         private static void DeletePerson()
