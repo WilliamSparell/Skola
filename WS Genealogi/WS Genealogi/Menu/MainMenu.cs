@@ -36,6 +36,7 @@ namespace WS_Genealogi.Menu
 
         private static void ListPerson()
         {
+            Console.Clear();
             Write("Vill du.....");
             Write("1. Söka på förnaman");
             Write("2. Söka på efternamn");
@@ -58,7 +59,7 @@ namespace WS_Genealogi.Menu
 
         private static void DeletePerson()
         {
-
+            Console.Clear();
             string name = WriteAndInput("Skriv in namn: ");
             string lastName = WriteAndInput("Skriv in efternamn: ");
 

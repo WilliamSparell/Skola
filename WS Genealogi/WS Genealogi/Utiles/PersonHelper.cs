@@ -135,9 +135,9 @@ namespace WS_Genealogi.Utiles
                 );
                 if (person != null)
                 {
-                    string parentName = WriteAndInput("Skriv in namn: ");
-                    string parentLastName = WriteAndInput("Skriv in efternamn: ");
-                    int.TryParse(WriteAndInput("Skriv in födelseår: "), out int parentBirthYear);
+                    string parentName = WriteAndInput("Skriv in namn på förälder: ");
+                    string parentLastName = WriteAndInput("Skriv in efternamn på förälder: ");
+                    int.TryParse(WriteAndInput("Skriv in födelseår på förälder: "), out int parentBirthYear);
                     person.Mother = parentName + " " + parentLastName;
                     db.Persons.Update(person);
                     db.SaveChanges();
