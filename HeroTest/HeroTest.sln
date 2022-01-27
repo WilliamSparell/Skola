@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroTest", "HeroTest\HeroTest.csproj", "{FADAC7BC-117F-478F-B30D-CCDF7685BAF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecflowGame", "SpecflowGame\SpecflowGame.csproj", "{D2096FCF-A3D3-42D3-9E61-AF94BAD1709B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FADAC7BC-117F-478F-B30D-CCDF7685BAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADAC7BC-117F-478F-B30D-CCDF7685BAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADAC7BC-117F-478F-B30D-CCDF7685BAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADAC7BC-117F-478F-B30D-CCDF7685BAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2096FCF-A3D3-42D3-9E61-AF94BAD1709B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2096FCF-A3D3-42D3-9E61-AF94BAD1709B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2096FCF-A3D3-42D3-9E61-AF94BAD1709B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2096FCF-A3D3-42D3-9E61-AF94BAD1709B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3E663A4-808D-4ECF-93AE-8B83540C3DDF}
+	EndGlobalSection
+EndGlobal
