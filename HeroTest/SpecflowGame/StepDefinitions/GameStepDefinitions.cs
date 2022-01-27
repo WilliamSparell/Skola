@@ -33,6 +33,25 @@ namespace SpecflowGame.StepDefinitions
             enemy.Attack(hero);
         }
 
+        [When(@"the hero attacks")]
+        public void WhenTheHeroAttacks()
+        {
+            hero.Attack(enemy);
+        }
+
+        [Then(@"the enemy will have less than (.*) HP")]
+        public void ThenTheEnemyWillHaveLessThanHP(int p0)
+        {
+            enemy.HP.Should().BeLessThanOrEqualTo(p0); 
+        }
+
+        [Then(@"the enemy will have (.*) HP")]
+        public void ThenTheEnemyWillHaveHP(int p0)
+        {
+            enemy.HP.Should().Be(p0);
+        }
+
+
         [Then(@"the hero should survive unharmed")]
         public void ThenTheHeroShouldSurviveUnharmed()
         {
