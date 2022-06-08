@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Datalogi_övning_1
 {
-    internal class MyLinkedList<T>
+    public class MyLinkedList<T>
     {
         private MyNode<T>? Head = null;
+        public MyNode<T> Current { get; set; }
 
         public void Push(T value)
         {
@@ -19,18 +20,20 @@ namespace Datalogi_övning_1
         }
         public T Get(int count)
         {
-            //if (count == 0)
-            //    return this.Head.Data;
-            //if (count == 1)
-            //{
-            //    return this.Head.Next.Data;
-            //}
             var nodeReference = this.Head;
             for (int i = 0; i < count; i++)
             {
                 nodeReference = nodeReference.Next;
             }
             return nodeReference.Data;
+        }
+        public void Next()
+        {
+            Current = Current.Next;
+        }
+        public void Reset()
+        {
+            Current = Head;
         }
     }
     public class MyNode<T>
@@ -39,3 +42,4 @@ namespace Datalogi_övning_1
         public MyNode<T> Next { get; set; }
     }
 }
+

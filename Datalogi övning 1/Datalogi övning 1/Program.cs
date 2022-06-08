@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 for (int i = 0; i < 5; i++)
 {
-    Övning3();
+    
 }
 
 void Övning1()
@@ -104,3 +104,4 @@ void Övning3()
     timer.Stop();
     Console.WriteLine("RunTime 2 " + timer.ElapsedMilliseconds);
 }
+
