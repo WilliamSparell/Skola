@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 for (int i = 0; i < 5; i++)
 {
-    Övning3();
+    
 }
 
 void Övning1()
@@ -105,3 +105,29 @@ void Övning3()
     Console.WriteLine("RunTime 2 " + timer.ElapsedMilliseconds);
 }
 
+MyStack<string> myStack = new MyStack<string>();
+
+while (true)
+{
+
+    Console.WriteLine("Skriv:");
+    var talrik = Console.ReadLine();
+
+    var uppdelad = talrik.Split(' ', 2);
+
+    switch (uppdelad[0])
+    {
+        case "add": myStack.Push(uppdelad[1]);
+            break;
+        case "pop": Console.WriteLine(myStack.Peek()); myStack.Pop();
+            break;
+        case "peek": Console.WriteLine(myStack.Peek());
+            break;
+        default: Console.WriteLine("fel");
+            break;
+
+
+    }
+
+
+}

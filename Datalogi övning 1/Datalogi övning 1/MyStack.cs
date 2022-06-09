@@ -6,22 +6,28 @@ using System.Threading.Tasks;
 
 namespace Datalogi_övning_1
 {
-    internal class Stack<T> : ISimpleStack<T>
+    internal class MyStack<T> : ISimpleStack<T>, ISimpleQueue<T>
     {
         private MyNode<T>? Top = null;
+        private MyNode<T> bottom = null;
+
         public void Push(T value)
-        {
+        { 
             var newNode = new MyNode<T>();
             newNode.Data = value;
             newNode.Next = Top;
             Top = newNode;
-            //Om stacken är tom?
+
+            if (bottom == null)
+            {
+                bottom = newNode;
+            }
         }
         public T Pop()
         {
             if (Top == null)
             {
-                throw new Exception("Listan är tom");
+                throw new Exception("Stacken är tom");
             }
             else
             {
@@ -35,7 +41,7 @@ namespace Datalogi_övning_1
         {
             if (Top == null)
             {
-                throw new Exception("Listan är tom");
+                throw new Exception("Stacken är tom");
             }
             else 
             {
@@ -43,5 +49,20 @@ namespace Datalogi_övning_1
             }
         }
 
+        public void AddLast(T value)
+        {
+            var newNode = new MyNode<T>();
+            newNode.Data = value;
+            bottom.Next = newNode;
+            bottom = newNode;
+        }
+        public T GetFirst()
+        {
+            return Peek();
+        }
+        public void RemoveFirst()
+        {
+            Pop();
+        }
     }
 }
