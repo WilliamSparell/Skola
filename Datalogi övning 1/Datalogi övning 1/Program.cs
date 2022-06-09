@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 for (int i = 0; i < 5; i++)
 {
-    
+    Övning3();
 }
 
 void Övning1()
@@ -19,7 +19,7 @@ void Övning1()
         arr[i] = number;
     }
     stopWatch.Stop();
-    Console.WriteLine("RunTime " + stopWatch.ElapsedMilliseconds);
+    Console.WriteLine("RunTime 1a " + stopWatch.ElapsedMilliseconds);
 }
 
 void Övning1b()
@@ -78,13 +78,13 @@ void Övning2b()
         summa += list[i];
     }
     stopWatch.Stop();
-    Console.WriteLine("RunTime " + stopWatch.ElapsedMilliseconds);
+    Console.WriteLine("RunTime 2b " + stopWatch.ElapsedMilliseconds);
 }
 
 void Övning3()
 {
     Stopwatch timer = Stopwatch.StartNew();
-    const int count = 10000;
+    const int count = 100000;
     double summa = 0;
     Random rnd = new Random();
     MyLinkedList<double> list = new();
