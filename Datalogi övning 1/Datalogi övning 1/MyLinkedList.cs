@@ -36,10 +36,5 @@ namespace Datalogi_övning_1
             Current = Head;
         }
     }
-    public class MyNode<T>
-    {
-        public T Data { get; set; }
-        public MyNode<T> Next { get; set; }
-    }
 }
 
