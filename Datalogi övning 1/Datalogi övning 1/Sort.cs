@@ -45,41 +45,28 @@ namespace Datalogi_övning_1
             
             int[] merged = new int[second.Length + first.Length];
             
-            int firstIndex = 0, seconedIndex = 0, indexResult = 0;
+            int firstIndex = 0, secondIndex = 0, mergedIndex = 0;
             //while either array still has an element
-            while (firstIndex < first.Length || seconedIndex < second.Length)
+            while (firstIndex < first.Length || secondIndex < second.Length)
             {
-                //if both arrays have elements  
-                if (firstIndex < first.Length && seconedIndex < second.Length)
+                if (firstIndex >= first.Length)
                 {
-                    //If item on left array is less than item on right array, add that item to the result array 
-                    if (first[firstIndex] <= second[seconedIndex])
+                    merged[mergedIndex++] = second[secondIndex++];
+                }
+                else if (secondIndex >= second.Length)
+                {
+                    merged[mergedIndex++] = first[firstIndex++];
+                }
+                else
+                {
+                    if (first[firstIndex] < second[secondIndex])
                     {
-                        merged[indexResult] = first[firstIndex];
-                        firstIndex++;
-                        indexResult++;
+                        merged[mergedIndex++] = first[firstIndex++];
                     }
-                    // else the item in the right array wll be added to the results array
                     else
                     {
-                        merged[indexResult] = second[seconedIndex];
-                        seconedIndex++;
-                        indexResult++;
+                        merged[mergedIndex++] = second[secondIndex++];
                     }
-                }
-                //if only the left array still has elements, add all its items to the results array
-                else if (firstIndex < first.Length)
-                {
-                    merged[indexResult] = first[firstIndex];
-                    firstIndex++;
-                    indexResult++;
-                }
-                //if only the right array still has elements, add all its items to the results array
-                else if (seconedIndex < second.Length)
-                {
-                    merged[indexResult] = second[seconedIndex];
-                    seconedIndex++;
-                    indexResult++;
                 }
             }
             return merged;
@@ -99,6 +86,67 @@ namespace Datalogi_övning_1
             foreach (var numbers in sorted)
             {
                 Console.WriteLine(numbers);
+            }
+        }
+        public static void QuickSort(int[] array)
+        {
+            QuickSortPart(array, 0, array.Length - 1);
+        }
+        public static void QuickSortPart(int[] array, int low, int high) // funkar inte
+        {
+            if (high == low)
+                return;
+            
+            var pivot = low;
+            int leftIndex = low + 1, rightIndex = high;
+            while (leftIndex < rightIndex)
+            {
+                if (array[leftIndex] <= array[pivot])
+                    leftIndex++;
+                if (array[rightIndex] >= array[pivot])
+                    rightIndex--;
+                if (array[leftIndex] > array[pivot] && array[rightIndex] < array[pivot])
+                {
+                    int temp = array[leftIndex];
+                    array[leftIndex] = array[rightIndex];
+                    array[rightIndex] = temp;
+                    leftIndex++;
+                    rightIndex--;
+                }
+            }
+
+            if (array[rightIndex] < array[pivot]) 
+            {
+                int temp = array[rightIndex];
+                array[rightIndex] = array[pivot];
+                array[pivot] = temp;
+                pivot = rightIndex;
+            }
+            else
+            {
+                int temp = array[rightIndex - 1];
+                array[rightIndex - 1] = array[pivot];
+                array[pivot] = temp;
+                pivot = rightIndex - 1;
+            }
+            QuickSortPart(array, low, pivot - 1);
+            QuickSortPart(array, pivot + 1, high);
+            //return array;
+        }
+        public static void TestQuickSort()
+        {
+            Console.WriteLine("TestQuickSort");
+            Random rnd = new Random();
+            int[] arr = new int[12];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(0, 5000);
+            }
+            QuickSort(arr);
+
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
             }
         }
     }

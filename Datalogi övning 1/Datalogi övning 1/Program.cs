@@ -1,7 +1,7 @@
 ﻿using Datalogi_övning_1;
 using System.Diagnostics;
 
-Sort.TestBubbleSort();
+Sort.t
 
 void Övning1()
 {
